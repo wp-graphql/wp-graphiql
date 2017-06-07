@@ -1,6 +1,6 @@
-# WPGraphiQL
+# WPGraphiQL: GraphiQL IDE in the WP-Admin
 
-This plugin brings the GraphiQL IDE to the WP-Admin.
+This plugin brings the power of the GraphiQL IDE to the WP-Admin. 
 
 Activate this plugin – with WPGraphQL (https://github.com/wp-graphql/wp-graphql) also active – and you will be able to browse your WPGraphQL schema straight from the WP-Admin. 
 
