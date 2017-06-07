@@ -2,7 +2,7 @@
 
 This plugin brings the GraphiQL IDE to the WP-Admin.
 
-Activate this plugin (with WPGraphQL also active), and you will be able to browse your WPGraphQL schema straight from
+Activate this plugin (with WPGraphQL (https://github.com/wp-graphql/wp-graphql) also active), and you will be able to browse your WPGraphQL schema straight from
 the WP-Admin. 
 
 Authentication works with your current session, so if you have proper permissions, you can run Mutations and Query 
