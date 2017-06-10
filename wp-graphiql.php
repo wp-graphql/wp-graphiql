@@ -104,7 +104,7 @@ class WPGraphiQL {
 		/**
 		 * Only enqueue the assets on the proper admin page, and only if WPGraphQL is also active
 		 */
-		if ( 'toplevel_page_wp-graphiql/wp-graphiql' === get_current_screen()->id && $this->is_wpgraphql_active() ) {
+		if ( strpos( get_current_screen()->id, 'wp-graphiql/wp-graphiql' ) && $this->is_wpgraphql_active() ) {
 
 			wp_enqueue_style( 'wp-graphiql', $this->get_app_stylesheet(), array(), false, false );
 			wp_enqueue_script( 'wp-graphiql-helpers', $this->get_app_script_helpers(), array( 'jquery' ), false, true );
