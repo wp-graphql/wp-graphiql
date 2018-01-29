@@ -22,6 +22,9 @@ if ( ! class_exists( 'WPGraphiQL' ) ) :
 class WPGraphiQL {
 
 	public function init() {
+		if ( ! defined( 'WPGRAPHIQL_PLUGIN_DIR' ) ) {
+			define( 'WPGRAPHIQL_PLUGIN_DIR', plugin_dir_url( __FILE__ ) );
+		}
 		add_action( 'admin_menu', [ $this, 'register_admin_page' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_react_app' ] );
 	}
@@ -72,7 +75,7 @@ class WPGraphiQL {
 		if ( empty( $manifest['main.css'] ) ) {
 			return '';
 		}
-		return plugins_url( 'wp-graphiql/assets/app/build/' . $manifest['main.css'] );
+		return WPGRAPHIQL_PLUGIN_DIR . 'assets/app/build/' . $manifest['main.css'];
 	}
 
 	/**
@@ -85,7 +88,7 @@ class WPGraphiQL {
 		if ( empty( $manifest['main.js'] ) ) {
 			return '';
 		}
-		return plugins_url( 'wp-graphiql/assets/app/build/' . $manifest['main.js'] );
+		return WPGRAPHIQL_PLUGIN_DIR . 'assets/app/build/' . $manifest['main.js'];
 	}
 
 	public function get_app_script_helpers() {
@@ -93,7 +96,7 @@ class WPGraphiQL {
 		if ( empty( $manifest['main.js'] ) ) {
 			return '';
 		}
-		return plugins_url( 'wp-graphiql/assets/js/wp-graphiql-helpers.js' );
+		return WPGRAPHIQL_PLUGIN_DIR . 'assets/js/wp-graphiql-helpers.js';
 	}
 
 	/**

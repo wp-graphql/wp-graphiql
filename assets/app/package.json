@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "wp-graphiql",
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
