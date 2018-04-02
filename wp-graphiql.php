@@ -60,7 +60,7 @@ class WPGraphiQL {
 	 * @return array|bool|string
 	 */
 	public function get_app_manifest() {
-		$manifest = file_get_contents( plugins_url( 'wp-graphiql/assets/app/build/asset-manifest.json' ) );
+		$manifest = file_get_contents( dirname( __FILE__ ) . '/assets/app/build/asset-manifest.json' );
 		$manifest = (array) json_decode( $manifest );
 		return $manifest;
 	}
