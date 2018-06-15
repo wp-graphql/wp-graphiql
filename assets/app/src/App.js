@@ -10,15 +10,16 @@ import './app.css';
 function graphQLFetcher(graphQLParams) {
 
   /**
-   * Get the nonce from the localized wpGraphiQLSettings object
+   * Get the nonce & endpoint from the localized wpGraphiQLSettings object
    * @type {null}
    */
   let nonce = ( window.wpGraphiQLSettings && window.wpGraphiQLSettings.nonce ) ? window.wpGraphiQLSettings.nonce : null;
+  let endpoint = ( window.wpGraphiQLSettings && window.wpGraphiQLSettings.graphqlEndpoint ) ? window.wpGraphiQLSettings.graphqlEndpoint : window.location.origin;
 
   /**
    * Fetch the WPGraphQL API
    */
-  return fetch(window.location.origin + '/graphql', {
+  return fetch( endpoint, {
     method: 'post',
     credentials: 'same-origin',
     headers: {
@@ -31,7 +32,11 @@ function graphQLFetcher(graphQLParams) {
 }
 
 const App = () => {
-  return <div className="wrapper" ><GraphiQL fetcher={graphQLFetcher} /></div>;
+  return (
+  	<div className="wrapper" >
+		<GraphiQL fetcher={graphQLFetcher} />
+	</div>
+	);
 }
 
 export default App;

@@ -8,7 +8,7 @@
  * Author URI:      http://wpgraphql.com
  * Text Domain:     wp-graphiql
  * Domain Path:     /languages
- * Version:         0.1.0
+ * Version:         0.2.0
  *
  * @package         WPGraphiql
  */
@@ -121,6 +121,7 @@ class WPGraphiQL {
 				'wpGraphiQLSettings',
 				array(
 					'nonce' => wp_create_nonce( 'wp_rest' ),
+					'graphqlEndpoint' => trailingslashit( get_bloginfo( 'url' ) ) . \WPGraphQL\Router::$route,
 				)
 			);
 
