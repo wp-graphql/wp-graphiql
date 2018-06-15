@@ -1,12 +1,13 @@
 {
   "name": "wp-graphiql",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "private": true,
   "devDependencies": {
     "react-scripts": "1.0.7"
   },
   "dependencies": {
     "graphiql": "^0.10.2",
+    "graphql": "^0.13.2",
     "isomorphic-fetch": "^2.2.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
