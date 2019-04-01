@@ -1,12 +1,14 @@
 import React from 'react';
 import GraphiQL from 'graphiql';
-import CodeMirror from 'codemirror';
 /**
  * Style the app
  */
 import 'graphiql/graphiql.css';
 import './app.css';
-import { isNumber } from 'util';
+
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
 
 class App extends React.Component {
   constructor() {
@@ -23,9 +25,8 @@ class App extends React.Component {
     this.refreshFetcher();
     if ( ( window.wpGraphiQLSettings ) ) {
       const { debug } = window.wpGraphiQLSettings;
-      console.log( debug );
       if ( debug ) {
-        this.setIntervalRefresh(isNumber(debug) ? debug : 5000);
+        this.setIntervalRefresh(isNumeric(debug) ? parseFloat(debug) : 15000);
       }
     }
   }
