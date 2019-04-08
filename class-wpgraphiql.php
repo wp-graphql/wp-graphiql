@@ -7,6 +7,7 @@
 
 if ( ! class_exists( 'WPGraphiQL' ) ) :
 
+	defined( 'GRAPHIQL_REFRESH_RATE' ) || define( 'GRAPHIQL_REFRESH_RATE', 15000 );
 	/**
 	 * Class WPGraphiQL
 	 */
@@ -129,7 +130,7 @@ if ( ! class_exists( 'WPGraphiQL' ) ) :
 					array(
 						'nonce'           => wp_create_nonce( 'wp_rest' ),
 						'graphqlEndpoint' => trailingslashit( get_bloginfo( 'url' ) ) . \WPGraphQL\Router::$route,
-						'debug'           => defined( 'GRAPHQL_DEBUG' ) ? GRAPHQL_DEBUG : false,
+						'debug'           => defined( 'GRAPHQL_DEBUG' ) ? GRAPHIQL_REFRESH_RATE : false,
 					)
 				);
 
