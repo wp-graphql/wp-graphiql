@@ -116,7 +116,6 @@ if ( ! class_exists( 'WPGraphiQL' ) ) :
 			 */
 			if ( strpos( get_current_screen()->id, 'wp-graphiql/wp-graphiql' ) && $this->is_wpgraphql_active() ) {
 
-				wp_enqueue_style( 'wp-graphiql-theme', '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.23.0/theme/solarized.css', array(), false, false );
 				wp_enqueue_style( 'wp-graphiql', $this->get_app_stylesheet(), array(), false, false );
 				wp_enqueue_script( 'wp-graphiql-helpers', $this->get_app_script_helpers(), array( 'jquery' ), false, true );
 				wp_enqueue_script( 'wp-graphiql', $this->get_app_script(), array(), false, true );
