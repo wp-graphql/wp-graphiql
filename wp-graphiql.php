@@ -121,7 +121,7 @@ class WPGraphiQL {
 				'wpGraphiQLSettings',
 				array(
 					'nonce' => wp_create_nonce( 'wp_rest' ),
-					'graphqlEndpoint' => trailingslashit( get_bloginfo( 'url' ) ) . \WPGraphQL\Router::$route,
+					'graphqlEndpoint' => trailingslashit( get_bloginfo( 'url' ) ) . 'index.php?' . \WPGraphQL\Router::$route,
 				)
 			);
 
