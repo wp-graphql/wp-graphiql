@@ -2,12 +2,7 @@
     display: flex;
     flex: 1;
 }
-#wp-graphiql .wrapper {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    border: 1px solid #cccccc;
-}
+
 #wp-graphiql .spinner{
     visibility: visible;
     background: none;
