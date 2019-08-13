@@ -95,24 +95,24 @@ function updateURL() {
 //  - query stored in localStorage (which graphiql set when closing window)
 //  - default empty query
 const DEFAULT_QUERY =
-	parameters.query ||
+	parameters.query && print( parse( parameters.query ) ) ||
 	(window.localStorage && window.localStorage.getItem(`graphiql:query`)) ||
 	null
 
 const QUERY_EXAMPLE_SITEMETADATA_TITLE = `#     {
-# 		  generalSettings {
-# 			url
-# 			title
-# 		  }
+#       generalSettings {
+#         url
+#         title
+#       }
 #     }`
 
 const QUERY_EXAMPLE_FALLBACK = `#     {
-#		  posts {
-#			nodes {
-#			  title
-#			  uri
-#			}
-#		  }
+#       posts {
+#         nodes {
+#           title
+#           uri
+#         }
+#       }
 #     }`
 
 function generateDefaultFallbackQuery(queryExample) {
@@ -158,7 +158,7 @@ const storedExplorerPaneState =
 class App extends React.Component {
 	state = {
 		schema: null,
-		query: print(parse(DEFAULT_QUERY)),
+		query: DEFAULT_QUERY,
 		explorerIsOpen: storedExplorerPaneState,
 	}
 
