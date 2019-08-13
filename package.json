@@ -1,9 +1,15 @@
 
 {
   "name": "wp-graphiql",
-  "version": "0.3.0",
+  "description": "This plugin provides the GraphiQL IDE as an admin page in WordPress, allowing the GraphQL WPGraphQL schema to be browsed from within WordPress.",
+  "author": "WPGraphQL, Digital First Media, Jason Bahl",
+  "homepage": "http://wpgraphql.com",
+  "bugs": {
+    "url": "https://github.com/wp-graphql/wp-graphiql/issues"
+  },
+  "version": "1.0.0",
+  "private": true,
   "main": "Gruntfile.js",
-  "author": "YOUR NAME HERE",
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-wp-i18n": "~0.5.0",
