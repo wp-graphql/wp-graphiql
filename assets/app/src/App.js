@@ -58,7 +58,6 @@ let endpoint = (window.wpGraphiQLSettings && window.wpGraphiQLSettings.graphqlEn
 
 
 function graphQLFetcher(graphQLParams) {
-
 	return fetch(endpoint, {
 		method: `post`,
 		headers: {
@@ -101,19 +100,19 @@ const DEFAULT_QUERY =
 	null
 
 const QUERY_EXAMPLE_SITEMETADATA_TITLE = `#     {
-#       site {
-#         siteMetadata {
-#           title
-#         }
-#       }
+# 		  generalSettings {
+# 			url
+# 			title
+# 		  }
 #     }`
 
 const QUERY_EXAMPLE_FALLBACK = `#     {
-#       allSitePage {
-#         nodes {
-#           path
-#         }
-#       }
+#		  posts {
+#			nodes {
+#			  title
+#			  uri
+#			}
+#		  }
 #     }`
 
 function generateDefaultFallbackQuery(queryExample) {
