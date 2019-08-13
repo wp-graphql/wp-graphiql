@@ -47,7 +47,7 @@ class WPGraphiQL {
 	public function render_admin_page() {
 
 		if ( $this->is_wpgraphql_active() ) {
-			echo '<div class="wrap"><div id="wp-graphiql"></div></div>';
+			echo '<div class="wrap"><div id="wp-graphiql" class="graphiql-container">Loading ...</div></div>';
 		} else {
 			echo '<div class="wrap"><h1>This plugin requires WPGraphQL to be installed to work. Please install WPGraphQL (https://github.com/wp-graphql/wp-graphql) and visit this page again.</h1></div>';
 		}
