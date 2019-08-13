@@ -158,7 +158,7 @@ const storedExplorerPaneState =
 class App extends React.Component {
 	state = {
 		schema: null,
-		query: DEFAULT_QUERY,
+		query: print(parse(DEFAULT_QUERY)),
 		explorerIsOpen: storedExplorerPaneState,
 	}
 
