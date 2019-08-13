@@ -2,7 +2,7 @@ import React from 'react';
 
 import GraphiQL from "graphiql"
 import GraphiQLExplorer from "graphiql-explorer"
-import {getIntrospectionQuery, buildClientSchema, parse} from "graphql"
+import {getIntrospectionQuery, buildClientSchema, parse, print} from "graphql"
 
 import "whatwg-fetch"
 
