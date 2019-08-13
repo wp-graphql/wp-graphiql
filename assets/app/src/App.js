@@ -20,16 +20,15 @@ window.location.search
 	.forEach(function (entry) {
 		var eq = entry.indexOf(`=`)
 		if (eq >= 0) {
-			parameters[decodeURIComponent(entry.slice(0, eq))] = decodeURIComponent(
-				entry.slice(eq + 1)
-			)
+			parameters[decodeURIComponent(entry.slice(0, eq))] = decodeURIComponent(entry.slice(eq + 1).replace(/\+/g, '%20'))
 		}
 	})
 
 // Produce a Location query string from a parameter object.
 function locationQuery(params) {
 	return (
-		`?` +
+		'admin.php' +
+		'?' +
 		Object.keys(params)
 			.map(function (key) {
 				return encodeURIComponent(key) + `=` + encodeURIComponent(params[key])
@@ -45,6 +44,7 @@ const graphqlParamNames = {
 	operationName: true,
 	explorerIsOpen: true,
 }
+
 const otherParams = {}
 
 for (var k in parameters) {
@@ -52,12 +52,12 @@ for (var k in parameters) {
 		otherParams[k] = parameters[k]
 	}
 }
-const fetchURL = locationQuery(otherParams)
+
+let nonce = (window.wpGraphiQLSettings && window.wpGraphiQLSettings.nonce) ? window.wpGraphiQLSettings.nonce : null;
+let endpoint = (window.wpGraphiQLSettings && window.wpGraphiQLSettings.graphqlEndpoint) ? window.wpGraphiQLSettings.graphqlEndpoint : window.location.origin;
+
 
 function graphQLFetcher(graphQLParams) {
-	let nonce = (window.wpGraphiQLSettings && window.wpGraphiQLSettings.nonce) ? window.wpGraphiQLSettings.nonce : null;
-	let endpoint = (window.wpGraphiQLSettings && window.wpGraphiQLSettings.graphqlEndpoint) ? window.wpGraphiQLSettings.graphqlEndpoint : window.location.origin;
-
 
 	return fetch(endpoint, {
 		method: `post`,
@@ -167,7 +167,7 @@ class App extends React.Component {
 		graphQLFetcher({
 			query: getIntrospectionQuery(),
 		}).then(result => {
-			const newState = { schema: buildClientSchema(result.data) }
+			const newState = {schema: buildClientSchema(result.data)}
 
 			if (this.state.query === null) {
 				try {
@@ -191,7 +191,7 @@ class App extends React.Component {
 					}
 					// eslint-disable-next-line no-empty
 				} catch (e) {
-					console.log(e)
+					console.error(e)
 				}
 				if (!newState.query) {
 					newState.query = generateDefaultFallbackQuery(QUERY_EXAMPLE_FALLBACK)
@@ -217,8 +217,8 @@ class App extends React.Component {
 		}
 
 		const token = cm.getTokenAt(mousePos)
-		const start = { line: mousePos.line, ch: token.start }
-		const end = { line: mousePos.line, ch: token.end }
+		const start = {line: mousePos.line, ch: token.start}
+		const end = {line: mousePos.line, ch: token.end}
 		const relevantMousePos = {
 			start: cm.indexFromPos(start),
 			end: cm.indexFromPos(end),
@@ -232,7 +232,7 @@ class App extends React.Component {
 				return false
 			}
 
-			const { start, end } = definition.loc
+			const {start, end} = definition.loc
 			return start <= position.start && end >= position.end
 		})
 
@@ -269,7 +269,7 @@ class App extends React.Component {
 	_handleEditQuery = query => {
 		parameters.query = query
 		updateURL()
-		this.setState({ query })
+		this.setState({query})
 	}
 
 	_handleToggleExplorer = () => {
@@ -282,12 +282,12 @@ class App extends React.Component {
 		}
 		parameters.explorerIsOpen = newExplorerIsOpen
 		updateURL()
-		this.setState({ explorerIsOpen: newExplorerIsOpen })
+		this.setState({explorerIsOpen: newExplorerIsOpen})
 	}
 
 
 	render() {
-		const { query, schema } = this.state
+		const {query, schema} = this.state
 
 		return (
 			<React.Fragment>

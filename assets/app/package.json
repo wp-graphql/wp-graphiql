@@ -6,9 +6,9 @@
     "react-scripts": "^1.1.4"
   },
   "dependencies": {
-    "graphql": "^0.13.2",
-    "graphiql": "^0.13.0",
+    "graphiql": "^0.13.2",
     "graphiql-explorer": "^0.4.3",
+    "graphql": "^14.4.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "whatwg-fetch": "^3.0.0"
