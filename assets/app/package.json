@@ -6,11 +6,12 @@
     "react-scripts": "^1.1.4"
   },
   "dependencies": {
-    "graphiql": "^0.11.11",
     "graphql": "^0.13.2",
-    "isomorphic-fetch": "^2.2.1",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "graphiql": "^0.13.0",
+    "graphiql-explorer": "^0.4.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "whatwg-fetch": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
