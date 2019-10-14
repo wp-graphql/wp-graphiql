@@ -10,7 +10,7 @@ const getQuery = (arg, spaceCount) => {
 
 const pageQuery = {
 	name: `Page query`,
-	language: `JavaScript`,
+	language: `Gatsby`,
 	codeMirrorMode: `jsx`,
 	options: [],
 	generate: arg => `import React from "react"
@@ -29,7 +29,7 @@ export default ComponentName
 
 const staticHook = {
 	name: `StaticQuery hook`,
-	language: `JavaScript`,
+	language: `Gatsby`,
 	codeMirrorMode: `jsx`,
 	options: [],
 	generate: arg => `import React from "react"
@@ -49,7 +49,7 @@ export default ComponentName
 
 const staticQuery = {
 	name: `StaticQuery`,
-	language: `JavaScript`,
+	language: `Gatsby`,
 	codeMirrorMode: `jsx`,
 	options: [],
 	generate: arg => `import React from "react"

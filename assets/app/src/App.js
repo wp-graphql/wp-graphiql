@@ -10,9 +10,6 @@ import snippets from "./snippets"
 /**
  * Style the app
  */
-
-
-
 import 'graphiql/graphiql.css';
 import './app.css';
 import "graphiql-code-exporter/CodeExporter.css"
