@@ -2,15 +2,17 @@ import React from 'react';
 
 import GraphiQL from "graphiql"
 import GraphiQLExplorer from "graphiql-explorer"
+import CodeExporter from "graphiql-code-exporter"
 import {getIntrospectionQuery, buildClientSchema, parse, print} from "graphql"
-
 import "whatwg-fetch"
+import snippets from "./snippets"
 
 /**
  * Style the app
  */
 import 'graphiql/graphiql.css';
 import './app.css';
+import "graphiql-code-exporter/CodeExporter.css"
 
 const parameters = {}
 
@@ -154,12 +156,22 @@ const storedExplorerPaneState =
 		? window.localStorage.getItem(`graphiql:graphiqlExplorerOpen`) !== `false`
 		: true
 
+const storedCodeExporterPaneState =
+	typeof parameters.codeExporterIsOpen !== `undefined`
+		? parameters.codeExporterIsOpen === `false`
+		? false
+		: true
+		: window.localStorage
+		? window.localStorage.getItem(`graphiql:graphiqlCodeExporterOpen`) ===
+		`true`
+		: false
 
 class App extends React.Component {
 	state = {
 		schema: null,
 		query: DEFAULT_QUERY,
 		explorerIsOpen: storedExplorerPaneState,
+		codeExporterIsOpen: storedCodeExporterPaneState,
 	}
 
 	componentDidMount() {
@@ -284,9 +296,31 @@ class App extends React.Component {
 		this.setState({explorerIsOpen: newExplorerIsOpen})
 	}
 
+	_handleToggleExporter = () => {
+		const newCodeExporterIsOpen = !this.state.codeExporterIsOpen
+		if (window.localStorage) {
+			window.localStorage.setItem(
+				`graphiql:graphiqlCodeExporterOpen`,
+				newCodeExporterIsOpen
+			)
+		}
+		parameters.codeExporterIsOpen = newCodeExporterIsOpen
+		updateURL()
+		this.setState({ codeExporterIsOpen: newCodeExporterIsOpen })
+	}
+
+
 
 	render() {
-		const {query, schema} = this.state
+		const { query, schema, codeExporterIsOpen } = this.state
+		const codeExporter = codeExporterIsOpen ? (
+			<CodeExporter
+				hideCodeExporter={this._handleToggleExporter}
+				snippets={snippets}
+				query={query}
+				codeMirrorTheme="default"
+			/>
+		) : null
 
 		return (
 			<React.Fragment>
@@ -325,8 +359,14 @@ class App extends React.Component {
 							label="Explorer"
 							title="Toggle Explorer"
 						/>
+						<GraphiQL.Button
+							onClick={this._handleToggleExporter}
+							label="Code Exporter"
+							title="Toggle Code Exporter"
+						/>
 					</GraphiQL.Toolbar>
 				</GraphiQL>
+				{codeExporter}
 			</React.Fragment>
 		);
 	}

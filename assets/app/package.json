@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "graphiql": "^0.13.2",
+    "graphiql-code-exporter": "^2.0.5",
     "graphiql-explorer": "^0.4.3",
     "graphql": "^14.4.2",
     "react": "^16.8.6",
