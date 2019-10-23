@@ -8,7 +8,7 @@
  * Author URI:      http://wpgraphql.com
  * Text Domain:     wp-graphiql
  * Domain Path:     /languages
- * Version:         1.0.0
+ * Version:         1.0.1
  *
  * @package         WPGraphiql
  */
