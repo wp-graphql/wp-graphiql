@@ -1,4 +1,7 @@
-# WPGraphiQL: GraphiQL IDE in the WP-Admin
+# DEPRECATED
+This project is deprecated as GraphiQL is now [built-in to WPGraphQL](https://github.com/wp-graphql/wp-graphql/releases/tag/v0.13.0).
+
+## WPGraphiQL: GraphiQL IDE in the WP-Admin
 
 This plugin brings the power of the GraphiQL IDE to the WP-Admin. 
 
